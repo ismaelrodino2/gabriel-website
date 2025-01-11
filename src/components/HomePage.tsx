@@ -5,27 +5,41 @@ import HomeProject from "./HomeProject";
 import Skills from "./Skills";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { userinfo, ctaTexts, headings } from "../Constants/userinfo";
 import Education from "./Education";
 import { useTheme } from "styled-components";
 import { Home1Section } from "@/types/home-1";
 import { Home2Section } from "@/types/home-2";
+import { Home3Section } from "@/types/home-3";
+import { Home4Section } from "@/types/home-4";
+import { Home5Section } from "@/types/home-5";
 
 interface CustomCSSProperties extends React.CSSProperties {
-  '--image-url'?: string;  // Definindo a variável CSS personalizada
+  "--image-url"?: string;
 }
 
-const HomePage = ({ mainContent }: { mainContent: [Home1Section, Home2Section] }) => {
+const HomePage = ({
+  mainContent,
+}: {
+  mainContent: [
+    Home1Section,
+    Home2Section,
+    Home3Section,
+    Home4Section,
+    Home5Section
+  ];
+}) => {
   const currentTheme = useTheme();
   console.log("currentTheme", currentTheme);
   return (
     <div>
       <div
         className={styles.homeheading}
-        style={{
-          '--image-url': `url(${mainContent[0].image.filename})`, 
-          backgroundColor: currentTheme.secondary
-        } as CustomCSSProperties} 
+        style={
+          {
+            "--image-url": `url(${mainContent[0].image.filename})`,
+            backgroundColor: currentTheme.secondary,
+          } as CustomCSSProperties
+        }
       >
         <h1 className={styles.heading}>{mainContent[0].headline} </h1>
         <h2
@@ -49,7 +63,7 @@ const HomePage = ({ mainContent }: { mainContent: [Home1Section, Home2Section] }
       </div>
       <div className={styles.homeWorkSection} id="work">
         <h1 className={styles.workheading} data-aos="fade-up">
-          {headings.workHomePage}
+          {mainContent[1].headline}
         </h1>
         {mainContent[1].cards.slice(0, 3).map((card, key) => {
           return (
@@ -58,8 +72,16 @@ const HomePage = ({ mainContent }: { mainContent: [Home1Section, Home2Section] }
             </div>
           );
         })}
-        <div style={{ textAlign: "center", paddingBottom: "2rem", width: 'fit', display: 'flex', justifyContent: 'center' }}>
-          <Link href="/work" >
+        <div
+          style={{
+            textAlign: "center",
+            paddingBottom: "2rem",
+            width: "fit",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Link href={mainContent[1].button.url}>
             <div
               className={styles.cta3}
               style={{
@@ -67,7 +89,7 @@ const HomePage = ({ mainContent }: { mainContent: [Home1Section, Home2Section] }
                 color: currentTheme.contrastText,
               }}
             >
-              {ctaTexts.workCTA} <span>&gt;</span>
+              {mainContent[1].button.title} <span>&gt;</span>
             </div>
           </Link>
         </div>
@@ -77,23 +99,28 @@ const HomePage = ({ mainContent }: { mainContent: [Home1Section, Home2Section] }
         className={styles.homeSkillSection}
         style={{ backgroundColor: currentTheme.secondary }}
       >
-        <Skills />
+        <Skills data={mainContent[2]} />
       </div>
-      <div>{userinfo.education.visible ? <Education /> : null}</div>
+      <Education data={mainContent[3]} />
       <div
         id="about"
         className={styles.homeAboutSection}
-        style={{ backgroundColor: currentTheme.secondary }}
+        style={
+          {
+            "--image-url-about": `url(${mainContent[4].image.filename})`,
+            backgroundColor: currentTheme.secondary,
+          } as CustomCSSProperties
+        }
       >
         <h1 className={styles.workheading} data-aos="fade-up">
-          {headings.about}
+          {mainContent[4].headline}
         </h1>
         <p
           className={styles.aboutText}
           style={{ color: currentTheme.subtext }}
           data-aos="fade-up"
         >
-          {userinfo.about.content}
+          {mainContent[4].text.content[0].content[0].text}
         </p>
         <div
           data-aos="fade-up"
@@ -106,7 +133,7 @@ const HomePage = ({ mainContent }: { mainContent: [Home1Section, Home2Section] }
             color: currentTheme.subtext,
           }}
         >
-          <Link href={userinfo.about.resume} target="_blank">
+          <Link href={mainContent[4].button[0].link.url} target="_blank">
             <div
               className={styles.cta4}
               style={{
@@ -116,7 +143,7 @@ const HomePage = ({ mainContent }: { mainContent: [Home1Section, Home2Section] }
                 alignItems: "center",
               }}
             >
-              {ctaTexts.resumeCTA}&nbsp;&nbsp;&nbsp;&nbsp;
+              {mainContent[4].button[0].label}&nbsp;&nbsp;&nbsp;&nbsp;
               <FontAwesomeIcon
                 width="15px"
                 height="15px"
