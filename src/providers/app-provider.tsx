@@ -7,8 +7,15 @@ import { GlobalStyles } from "../ThemeConfig";
 import { lightTheme, darkTheme } from "../Constants/theme";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { defaultSystem } from "@chakra-ui/react";
+import Layout from "./layout";
+import { Toaster } from "@/components/ui/toaster";
 
-const AppProvider = ({ children }: {children: React.ReactNode}) => {
+type AppProviderProps = {
+  children: React.ReactNode;
+};
+
+const AppProvider = ({ children }: AppProviderProps) => {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -32,11 +39,16 @@ const AppProvider = ({ children }: {children: React.ReactNode}) => {
 
   const currentTheme = theme === "light" ? lightTheme : darkTheme;
 
+  console.log("Current Theme:", currentTheme);
+
   return (
-    <ChakraProvider>
+    <ChakraProvider value={defaultSystem}>
       <ThemeProvider theme={currentTheme}>
         <GlobalStyles />
-        {children({ toggleTheme, currentTheme })}
+        <Layout toggleTheme={toggleTheme} currentTheme={currentTheme}>
+        <Toaster />
+        {children}
+        </Layout>
       </ThemeProvider>
     </ChakraProvider>
   );
