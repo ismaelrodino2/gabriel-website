@@ -1,5 +1,4 @@
 "use client";
-import { useMediaQuery } from "@chakra-ui/react";
 import styles from "../styles/NavbarFooter.module.css";
 import Navlinks from "./Navlinks";
 import { useState, useEffect } from "react";
@@ -7,23 +6,19 @@ import { Switch } from "./ui/switch";
 import Link from "next/link";
 import { NavBarTypes } from "@/types/navbar";
 import { useTheme } from "styled-components";
+import { useMediaQuery } from "react-responsive";
 
 interface NavbarProps {
   toggleTheme: () => void;
   navData: NavBarTypes;
-
 }
 
-const Navbar: React.FC<NavbarProps> = ({
-  toggleTheme,
-  navData,
-}) => {
-    const currentTheme = useTheme();
-  
+const Navbar: React.FC<NavbarProps> = ({ toggleTheme, navData }) => {
+  const currentTheme = useTheme();
+
   console.log("navData", navData);
-  const [drawerVisible] = useMediaQuery(["(max-width: 950px)"], {
-    ssr: false,
-  }); // Passar a query como array
+
+  const drawerVisible = useMediaQuery({ maxWidth: 950 });
 
   const [sticky, setSticky] = useState(false);
 
