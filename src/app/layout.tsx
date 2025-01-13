@@ -50,9 +50,19 @@ export default async function RootLayout({
   );
 }
 
+
 async function fetchData() {
-  const sbParams = { version: "draft" as const};
- 
-  const storyblokApi = getStoryblokApi();
-  return storyblokApi.get(`cdn/stories/navbar-footer`, sbParams, {cache: "no-store"});
+  try {
+    const sbParams = { version: "draft" as const };
+
+    const storyblokApi = getStoryblokApi();
+    return storyblokApi.get(`cdn/stories/navbar-footer`, sbParams, {
+      next: { revalidate: 60 },
+    });
+  } catch (err) {
+    console.log(err);
+    return {
+        data: null
+    }
+  }
 }

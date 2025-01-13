@@ -4,7 +4,7 @@ import { faTelegramPlane } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import { useTheme } from "styled-components";
 import { Card } from "@/types/home-2";
-import { useMediaQuery } from "@chakra-ui/react";
+import { useMediaQuery } from "react-responsive";
 
 // Definir a interface para o tipo de project
 interface Project {
@@ -14,9 +14,8 @@ interface Project {
 
 const HomeProject: React.FC<Project> = ({ card, id }) => {
   const currentTheme = useTheme();
-    const [isMobile] = useMediaQuery(["(max-width: 950px)"], {
-      ssr: false,
-    });
+
+  const isMobile = useMediaQuery({ maxWidth: 950 });
 
   return (
     <div
@@ -35,7 +34,10 @@ const HomeProject: React.FC<Project> = ({ card, id }) => {
             borderColor: currentTheme.accent,
           }}
         >
-          <FontAwesomeIcon icon={faTelegramPlane} size={isMobile ? "3x":"4x"} />
+          <FontAwesomeIcon
+            icon={faTelegramPlane}
+            size={isMobile ? "3x" : "4x"}
+          />
         </div>
         <h1 className={styles.projectTitle}>{card.label}</h1>
         <h2

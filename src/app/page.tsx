@@ -21,9 +21,19 @@ export default async function Home() {
   );
 }
 
+
 async function fetchData() {
-  const sbParams = { version: "draft" as const};
- 
-  const storyblokApi = getStoryblokApi();
-  return storyblokApi.get(`cdn/stories/home`, sbParams, {cache: "no-store"});
+  try {
+    const sbParams = { version: "draft" as const };
+
+    const storyblokApi = getStoryblokApi();
+    return storyblokApi.get(`cdn/stories/home`, sbParams, {
+      next: { revalidate: 60 },
+    });
+  } catch (err) {
+    console.log(err);
+    return {
+        data: null
+    }
+  }
 }
