@@ -1,43 +1,45 @@
 import React from 'react';
 import styles from '../styles/NavbarFooter.module.css';
-import { userinfo } from '../Constants/userinfo'
 import Link from 'next/link'
+import { useTheme } from 'styled-components';
+import { FooterTypes } from '@/types/footer';
 
 interface FooterProps {
-    currentTheme: {
-        footerColor: string;
-        subtext: string;
-    };
+   
+    footerData: FooterTypes
 }
 
-const Footer: React.FC<FooterProps> = ({ currentTheme }) => {
+const Footer: React.FC<FooterProps> = ({footerData}) => {
+    const currentTheme = useTheme();
     const footerColor = currentTheme?.footerColor || '#F0F0F0';
+    console.log("footerData", footerData)
 
     return (
         <div className={styles.footermain} style={{ backgroundColor: footerColor, color: currentTheme.subtext }}>
             <div className={styles.footertable}>
-                <Link href='/'><h2 className={styles.footerlogo}>{userinfo.logoText}</h2></Link>
+                <Link href={footerData.button.url}><h2 className={styles.footerlogo}>{footerData.button.title}</h2></Link>
                 <ul>
                     <li className={styles.listHeading}>Socials</li>
-                    {userinfo.socials ?
-                        userinfo.socials.map((social, key) => {
+                    {footerData.cards[0] ?
+                        footerData.cards[0].text.content.map((social, key) => {
                             return (
-                                <Link href={social.link} key={key}><li>{social.type}</li></Link>
+                                <Link href={social.content[0].marks[0].attrs.href} key={key}><li>{social.content[0].text}</li></Link>
                             )
                         }) : null
                     }
-                    <Link href={`mailto:${userinfo.contact.email ? userinfo.contact.email : ''}`}><li>Mail</li></Link>
                 </ul>
+               
                 <ul>
-                    <li className={styles.listHeading}>Pages</li>
-                    <Link href='/'><li>Home</li></Link>
-                    <Link href='/#about'><li>About</li></Link>
-                    <Link href='/work'><li>Work</li></Link>
-                    <Link href='/contact'><li>Contact</li></Link>
+                    <li className={styles.listHeading}>Socials</li>
+                    {footerData.cards[1] ?
+                        footerData.cards[1].text.content.map((social, key) => {
+                            return (
+                                <Link href={social.content[0].marks[0].attrs.href} key={key}><li>{social.content[0].text}</li></Link>
+                            )
+                        }) : null
+                    }
                 </ul>
             </div>
-            <hr style={{ height: '1px', backgroundColor: currentTheme.subtext, border: 'none', opacity: '0.5' }}></hr>
-            <h2 className={styles.footercontent}>Template by Asavari Ambavane</h2>
         </div>
     )
 }

@@ -32,7 +32,7 @@
 }
 
 .card{
-    height: 35vmin;
+    /* height: 35vmin; */
     width: 60vmin;
     background-repeat: no-repeat;
     background-size: cover;
@@ -54,12 +54,15 @@
 
 .cardtitle{
     display: flex;
-    justify-content: space-between;
+  flex-direction: column;
     width: 60vmin;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
 .cardbottom{
     width: 60vmin;
+    padding-top: 15px;
 }
 
 .socialIcon{
@@ -69,6 +72,8 @@
     width: 2.5rem;
     margin: 1rem 0 1rem 1rem;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
 
 .projtitle{
@@ -76,6 +81,7 @@
     letter-spacing: 1px;
     font-weight: bold;
     text-transform: uppercase;
+
 }
 
 .projdescription{

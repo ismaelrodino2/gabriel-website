@@ -2,30 +2,28 @@
 
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { FooterTypes } from "@/types/footer";
+import { NavBarTypes } from "@/types/navbar";
 import React from "react";
 
 interface LayoutProps {
   children: React.ReactNode;
   toggleTheme: () => void;
-  currentTheme: {
-    secondary: string;
-    boxShadow: string;
-    name: string;
-    footerColor: string;
-    subtext: string;
-  };
+  navFooterData: [NavBarTypes, FooterTypes];
+
 }
 
 const Layout: React.FC<LayoutProps> = ({
   children,
   toggleTheme,
-  currentTheme,
+  navFooterData
 }) => {
+  
   return (
     <div>
-      <Navbar toggleTheme={toggleTheme} currentTheme={currentTheme} />
+      <Navbar toggleTheme={toggleTheme}  navData={navFooterData[0]} />
       {children}
-      <Footer currentTheme={currentTheme || {}} />
+      <Footer footerData={navFooterData[1]} />
     </div>
   );
 };

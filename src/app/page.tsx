@@ -9,10 +9,10 @@ import { getStoryblokApi} from "@storyblok/react/rsc";
 
 export default async function Home() {
   const { data } = await fetchData();
+  console.log("qqqq", data);
 
-  const mainContent:[Home1Section, Home2Section, Home3Section, Home4Section, Home5Section] =  data.stories[0].content.body
+  const mainContent:[Home1Section, Home2Section, Home3Section, Home4Section, Home5Section] =  data.story.content.body
 
-  console.log("qqqq", data.stories[0].content.body);
   return (
     <div>
       <HeadTag page="Home" />
@@ -25,5 +25,5 @@ export async function fetchData() {
   const sbParams = { version: "draft" as const};
  
   const storyblokApi = getStoryblokApi();
-  return storyblokApi.get(`cdn/stories/`, sbParams, {cache: "no-store"});
+  return storyblokApi.get(`cdn/stories/home`, sbParams, {cache: "no-store"});
 }

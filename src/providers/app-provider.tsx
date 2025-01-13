@@ -10,12 +10,16 @@ import "aos/dist/aos.css";
 import { defaultSystem } from "@chakra-ui/react";
 import Layout from "./layout";
 import { Toaster } from "@/components/ui/toaster";
+import { NavBarTypes } from "@/types/navbar";
+import { FooterTypes } from "@/types/footer";
 
 type AppProviderProps = {
   children: React.ReactNode;
+  navFooterData: [NavBarTypes, FooterTypes]
 };
 
-const AppProvider = ({ children }: AppProviderProps) => {
+const AppProvider = ({ children, navFooterData }: AppProviderProps) => {
+  console.log("tetee", navFooterData)
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -39,13 +43,13 @@ const AppProvider = ({ children }: AppProviderProps) => {
 
   const currentTheme = theme === "light" ? lightTheme : darkTheme;
 
-  console.log("Current Theme:", currentTheme);
+  console.log("navFooterData:", navFooterData);
 
   return (
     <ChakraProvider value={defaultSystem}>
       <ThemeProvider theme={currentTheme}>
         <GlobalStyles />
-        <Layout toggleTheme={toggleTheme} currentTheme={currentTheme}>
+        <Layout toggleTheme={toggleTheme} navFooterData={navFooterData}>
         <Toaster />
         {children}
         </Layout>

@@ -291,6 +291,7 @@
   color: #363537;
 }
 
+
 @media only screen and (max-width: 1200px){
   .timeline{
     width: 80vw;
@@ -302,6 +303,8 @@
   .projectmain{
     width: 70%;
   }
+
+
 
   .homeheading{
     padding: 0 15vw;
@@ -320,6 +323,7 @@
     width: fit-content;
     margin: auto;
     padding: 2rem 0;
+    flex-direction: column;
   }
   .line{
     width: 100%;
@@ -391,7 +395,11 @@
   .projectIcon{
     height: 50px;
     width: 50px;
-    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
     margin-bottom: 0.5rem;
     border: 3px solid white;
   }
@@ -408,7 +416,7 @@
     padding: 1rem;
   }
   .homeAboutSection{
-    height: 80vh;
+    height: 100%;
   }
   .aboutText{
     text-align: left;

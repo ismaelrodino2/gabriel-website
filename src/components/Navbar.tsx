@@ -1,24 +1,28 @@
-"use client"
+"use client";
 import { useMediaQuery } from "@chakra-ui/react";
 import styles from "../styles/NavbarFooter.module.css";
 import Navlinks from "./Navlinks";
 import { useState, useEffect } from "react";
-import { userinfo } from "../Constants/userinfo";
 import { Switch } from "./ui/switch";
 import Link from "next/link";
+import { NavBarTypes } from "@/types/navbar";
+import { useTheme } from "styled-components";
 
 interface NavbarProps {
   toggleTheme: () => void;
-  currentTheme: {
-    secondary: string;
-    boxShadow: string;
-    name: string;
-  };
+  navData: NavBarTypes;
+
 }
 
-const Navbar: React.FC<NavbarProps> = ({ toggleTheme, currentTheme }) => {
+const Navbar: React.FC<NavbarProps> = ({
+  toggleTheme,
+  navData,
+}) => {
+    const currentTheme = useTheme();
+  
+  console.log("navData", navData);
   const [drawerVisible] = useMediaQuery(["(max-width: 950px)"], {
-    ssr: false
+    ssr: false,
   }); // Passar a query como array
 
   const [sticky, setSticky] = useState(false);
@@ -53,13 +57,11 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, currentTheme }) => {
         }}
       >
         <Link href="/">
-          
-            <h2 className={styles.logo}>{userinfo.logoText}</h2>
-          
+          <h2 className={styles.logo}>{navData.headline}</h2>
         </Link>
         {!drawerVisible ? (
           <div style={{ display: "flex" }}>
-            <Navlinks />
+            <Navlinks navData={navData} />
           </div>
         ) : null}
         <Switch
@@ -80,7 +82,7 @@ const Navbar: React.FC<NavbarProps> = ({ toggleTheme, currentTheme }) => {
               marginTop: "10px",
             }}
           >
-            <Navlinks />
+            <Navlinks navData={navData} />
           </div>
         </>
       ) : null}
