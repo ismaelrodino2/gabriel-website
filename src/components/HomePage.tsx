@@ -49,7 +49,7 @@ const HomePage = ({
           {mainContent[0].text?.content[0].content[0].text}
         </h2>
         <Link href="#work">
-          <div
+          {/* <div
             className={styles.cta1}
             style={{
               backgroundColor: currentTheme.accent,
@@ -58,12 +58,12 @@ const HomePage = ({
             }}
           >
             {mainContent[0].button[0].label}
-          </div>
+          </div> */}
         </Link>
       </div>
       <div className={styles.homeWorkSection} id="work">
         <h1 className={styles.workheading} data-aos="fade-up">
-          {mainContent[1].headline}
+          {/* {mainContent[1].headline} */}
         </h1>
         {mainContent[1].cards.slice(0, 3).map((card, key) => {
           return (
@@ -81,7 +81,7 @@ const HomePage = ({
             justifyContent: "center",
           }}
         >
-          <Link href={mainContent[1].button.url}>
+          {/* <Link href={mainContent[1].button.url}>
             <div
               className={styles.cta3}
               style={{
@@ -91,7 +91,7 @@ const HomePage = ({
             >
               {mainContent[1].button.title} <span>&gt;</span>
             </div>
-          </Link>
+          </Link> */}
         </div>
       </div>
       <div

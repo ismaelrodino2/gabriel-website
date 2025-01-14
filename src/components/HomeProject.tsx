@@ -1,10 +1,10 @@
 import styles from "../styles/Home.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTelegramPlane } from "@fortawesome/free-brands-svg-icons";
-import Link from "next/link";
 import { useTheme } from "styled-components";
 import { Card } from "@/types/home-2";
 import { useMediaQuery } from "react-responsive";
+import { render } from "storyblok-rich-text-react-renderer";
 
 // Definir a interface para o tipo de project
 interface Project {
@@ -16,6 +16,8 @@ const HomeProject: React.FC<Project> = ({ card, id }) => {
   const currentTheme = useTheme();
 
   const isMobile = useMediaQuery({ maxWidth: 950 });
+
+  console.log("cardcard",card)
 
   return (
     <div
@@ -44,9 +46,9 @@ const HomeProject: React.FC<Project> = ({ card, id }) => {
           className={styles.projectSubTitle}
           style={{ color: currentTheme.subtext }}
         >
-          {card.text}
+          {render(card.text)}
         </h2>
-        <Link
+        {/* <Link
           href={card.button[0].link.url}
           target="_blank"
           rel="noopener noreferrer"
@@ -54,7 +56,7 @@ const HomeProject: React.FC<Project> = ({ card, id }) => {
           <div className={styles.cta2} style={{ color: currentTheme.tertiary }}>
             {card.button[0].label}
           </div>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
