@@ -32,7 +32,7 @@
 }
 
 .card{
-    /* height: 35vmin; */
+    height: 35vmin; 
     width: 60vmin;
     background-repeat: no-repeat;
     background-size: cover;

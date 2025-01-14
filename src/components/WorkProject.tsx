@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import styles from "../styles/Work.module.css";
 
 import Image from "next/image";
@@ -52,24 +52,22 @@ const WorkProject: React.FC<WorkProjectProps> = ({ project, id }) => {
             <Image
               src={project.text.content[0].content[0].attrs.src}
               alt="thumbnail image"
-              height="300"
-              width="500"
+              layout="fill"
+              objectFit="cover"
             />
           </div>
           <div>
-         
-              <div
-                className={styles.socialIcon}
-                style={{
-                  color: currentTheme.subtext,
-                  borderColor: currentTheme.subtext,
-                }}
-              >
-                  {/* <Link href={project.button[0]?.link?.url} > */}
-                      <LinkIcon />
-                  {/* </Link> */}
-                
-              </div>
+            <div
+              className={styles.socialIcon}
+              style={{
+                color: currentTheme.subtext,
+                borderColor: currentTheme.subtext,
+              }}
+            >
+              {/* <Link href={project.button[0]?.link?.url} > */}
+              <LinkIcon />
+              {/* </Link> */}
+            </div>
           </div>
         </div>
         <div className={styles.cardbottom}>
