@@ -1,12 +1,10 @@
 "use client"
 import styles from "../styles/Work.module.css";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from "styled-components";
 import { HStack, TagLabel } from "@chakra-ui/react";
 import { Tag } from "./ui/tag";
-import { Tooltip } from "./ui/tooltip";
 import { LinkIcon } from "@/Constants/icons";
 import { Card } from "@/types/work";
 
@@ -18,7 +16,7 @@ interface WorkProjectProps {
 const WorkProject: React.FC<WorkProjectProps> = ({ project, id }) => {
   const currentTheme = useTheme();
 
-  console.log("project", project);
+  console.log("project", project.button[0].link);
 
   return (
     <div
@@ -59,10 +57,7 @@ const WorkProject: React.FC<WorkProjectProps> = ({ project, id }) => {
             />
           </div>
           <div>
-            <Tooltip
-              content="Project link"
-              positioning={{ placement: "right-end" }}
-            >
+         
               <div
                 className={styles.socialIcon}
                 style={{
@@ -70,13 +65,11 @@ const WorkProject: React.FC<WorkProjectProps> = ({ project, id }) => {
                   borderColor: currentTheme.subtext,
                 }}
               >
-                {project.button[0].link.url !== "" && (
-                  <Link href={project.button[0].link.url} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {/* <Link href={project.button[0]?.link?.url} > */}
                       <LinkIcon />
-                  </Link>
-                )}
+                  {/* </Link> */}
+                
               </div>
-            </Tooltip>
           </div>
         </div>
         <div className={styles.cardbottom}>
