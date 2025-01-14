@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTheme } from "styled-components";
 import { Home3Section } from "@/types/home-3";
 import React from "react";
+import { render } from "storyblok-rich-text-react-renderer";
 
 const Skills = ({ data }: { data: Home3Section }) => {
   const currentTheme = useTheme();
@@ -33,13 +34,7 @@ const Skills = ({ data }: { data: Home3Section }) => {
                         >
                           {value.label}
                         </h1>
-                        {value.text.content
-                          ? value.text.content.map((skill, key2) => {
-                              return (
-                                <h2 key={key2}>{skill.content[0].text}</h2>
-                              );
-                            })
-                          : null}
+                        {render(value.text)}
                       </ul>
                     </div>
                   </div>
