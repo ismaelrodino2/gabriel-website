@@ -231,6 +231,9 @@
         height: 40.8333vmin;
         width: 70vmin;
     }
+    .card > img {
+      height: 100%;
+    }
     .cardbottom{
       width: 70vmin;
   }

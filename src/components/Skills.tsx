@@ -24,7 +24,7 @@ const Skills = ({ data }: { data: Home3Section }) => {
                 <React.Fragment key={key1}>
                   <div
                     
-                    style={{ display: "flex", alignItems: "center" }}
+                    style={{ display: "flex", }}
                   >
                     <div>
                       <ul className={styles.skillList} data-aos="fade-up">
