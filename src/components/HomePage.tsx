@@ -12,7 +12,9 @@ import { Home2Section } from "@/types/home-2";
 import { Home3Section } from "@/types/home-3";
 import { Home4Section } from "@/types/home-4";
 import { Home5Section } from "@/types/home-5";
+import dynamic from "next/dynamic";
 
+const Typewriter = dynamic(() => import("typewriter-effect"), { ssr: false });
 interface CustomCSSProperties extends React.CSSProperties {
   "--image-url"?: string;
 }
@@ -29,6 +31,7 @@ const HomePage = ({
   ];
 }) => {
   const currentTheme = useTheme();
+
   console.log("currentTheme", currentTheme);
   return (
     <div>
@@ -41,7 +44,27 @@ const HomePage = ({
           } as CustomCSSProperties
         }
       >
-        <h1 className={styles.heading}>{mainContent[0].headline} </h1>
+        <h1 className={styles.heading}>
+          <Typewriter
+            options={{
+              loop: true,
+            }}
+            onInit={(typewriter) => {
+              typewriter
+                .typeString(mainContent[0].headline)
+                .callFunction(() => {
+                  console.log("String typed out!");
+                })
+                .pauseFor(2500)
+                .deleteAll()
+                .callFunction(() => {
+                  console.log("All strings were deleted");
+                })
+                .start();
+            }}
+          />
+        </h1>
+
         <h2
           className={styles.subheading}
           style={{ color: currentTheme.subtext }}
@@ -127,7 +150,6 @@ const HomePage = ({
           style={{
             textAlign: "center",
             padding: "1rem 0",
-            margin: "1rem 0",
             position: "relative",
             display: "flex",
             color: currentTheme.subtext,

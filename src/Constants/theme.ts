@@ -15,7 +15,7 @@ export const lightTheme: Theme = {
     name: 'light',
     body: '#fefefe',
     text: '#363537',
-    subtext: '#707070',
+    subtext: '#000000',
     secondary: '#d7f7f5',
     tertiary: '#75cac3',
     accent: '#263859',
