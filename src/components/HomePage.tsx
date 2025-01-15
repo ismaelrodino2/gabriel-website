@@ -46,21 +46,25 @@ const HomePage = ({
       >
         <h1 className={styles.heading}>
           <Typewriter
+            options={{
+              autoStart: true,
+              loop: true,
+            }}
             onInit={(typewriter) => {
               typewriter
-                .typeString("Hi there")
-                .pauseFor(300)
-                .typeString(" I am Gabriel.")
-                .pauseFor(1000)
-                .deleteChars(13)
-                .typeString(" I am a UI/UX Designer.")
-                .pauseFor(1000)
-                .deleteChars(23)
-                .typeString(" I am a digital Designer.")
-                .pauseFor(1000)
-                .deleteChars(25) 
-                .changeDeleteSpeed(50)
-                .start();
+              .typeString("Hi there")  
+              .pauseFor(300)
+              .typeString("<br /> I am Gabriel.") 
+              .pauseFor(1000)
+              .deleteChars(8)
+              .typeString(" a UI/UX Designer.")
+              .pauseFor(1000)
+              .deleteChars(17)
+              .typeString(" a digital Designer.")
+              .pauseFor(1000)
+              .deleteChars(18)
+              .changeDeleteSpeed(50)
+              .start();
             }}
           />
         </h1>

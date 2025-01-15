@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../styles/Home.module.css";
-import Link from "next/link";
 import { useTheme } from "styled-components";
 import { Home4Section } from "@/types/home-4";
 
@@ -47,7 +46,7 @@ const Education = ({ data }: { data: Home4Section }) => {
         </ul>
       </div>
 
-      <div
+      {/* <div
         style={{
           textAlign: "center",
           paddingBottom: "2rem",
@@ -67,7 +66,7 @@ const Education = ({ data }: { data: Home4Section }) => {
             {data.button.title} <span>&gt;</span>
           </div>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };
