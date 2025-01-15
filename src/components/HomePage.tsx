@@ -32,7 +32,7 @@ const HomePage = ({
 }) => {
   const currentTheme = useTheme();
 
-  console.log("currentTheme", currentTheme);
+  console.log("mainContent[1].cards", mainContent[1].cards);
   return (
     <div>
       <div
@@ -46,20 +46,20 @@ const HomePage = ({
       >
         <h1 className={styles.heading}>
           <Typewriter
-            options={{
-              loop: true,
-            }}
             onInit={(typewriter) => {
               typewriter
-                .typeString(mainContent[0].headline)
-                .callFunction(() => {
-                  console.log("String typed out!");
-                })
-                .pauseFor(2500)
-                .deleteAll()
-                .callFunction(() => {
-                  console.log("All strings were deleted");
-                })
+                .typeString("Hi there")
+                .pauseFor(300)
+                .typeString(" I am Gabriel.")
+                .pauseFor(1000)
+                .deleteChars(13)
+                .typeString(" I am a UI/UX Designer.")
+                .pauseFor(1000)
+                .deleteChars(23)
+                .typeString(" I am a digital Designer.")
+                .pauseFor(1000)
+                .deleteChars(25) 
+                .changeDeleteSpeed(50)
                 .start();
             }}
           />
@@ -71,24 +71,13 @@ const HomePage = ({
         >
           {mainContent[0].text?.content[0].content[0].text}
         </h2>
-        <Link href="#work">
-          {/* <div
-            className={styles.cta1}
-            style={{
-              backgroundColor: currentTheme.accent,
-              color: currentTheme.contrastText,
-              boxShadow: currentTheme.boxShadow,
-            }}
-          >
-            {mainContent[0].button[0].label}
-          </div> */}
-        </Link>
+        <Link href="#work"></Link>
       </div>
       <div className={styles.homeWorkSection} id="work">
         <h1 className={styles.workheading} data-aos="fade-up">
-          {/* {mainContent[1].headline} */}
+          {mainContent[1].headline}
         </h1>
-        {mainContent[1].cards.slice(0, 3).map((card, key) => {
+        {mainContent[1].cards.slice(0).map((card, key) => {
           return (
             <div key={key} data-aos="fade-up">
               <HomeProject card={card} id={key} />
@@ -103,19 +92,7 @@ const HomePage = ({
             display: "flex",
             justifyContent: "center",
           }}
-        >
-          {/* <Link href={mainContent[1].button.url}>
-            <div
-              className={styles.cta3}
-              style={{
-                backgroundColor: currentTheme.accent,
-                color: currentTheme.contrastText,
-              }}
-            >
-              {mainContent[1].button.title} <span>&gt;</span>
-            </div>
-          </Link> */}
-        </div>
+        ></div>
       </div>
       <div
         id="skills"
