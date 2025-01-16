@@ -13,6 +13,8 @@ import { Home3Section } from "@/types/home-3";
 import { Home4Section } from "@/types/home-4";
 import { Home5Section } from "@/types/home-5";
 import dynamic from "next/dynamic";
+import { Home6Section } from "@/types/home-6";
+import References from "./References";
 
 const Typewriter = dynamic(() => import("typewriter-effect"), { ssr: false });
 interface CustomCSSProperties extends React.CSSProperties {
@@ -27,7 +29,8 @@ const HomePage = ({
     Home2Section,
     Home3Section,
     Home4Section,
-    Home5Section
+    Home5Section,
+    Home6Section
   ];
 }) => {
   const currentTheme = useTheme();
@@ -52,19 +55,19 @@ const HomePage = ({
             }}
             onInit={(typewriter) => {
               typewriter
-              .typeString("Hi there")  
-              .pauseFor(300)
-              .typeString("<br /> I am Gabriel.") 
-              .pauseFor(1000)
-              .deleteChars(8)
-              .typeString(" a UI/UX Designer.")
-              .pauseFor(1000)
-              .deleteChars(17)
-              .typeString(" a digital Designer.")
-              .pauseFor(1000)
-              .deleteChars(18)
-              .changeDeleteSpeed(50)
-              .start();
+                .typeString("Hi there")
+                .pauseFor(300)
+                .typeString("<br /> I am Gabriel.")
+                .pauseFor(1000)
+                .deleteChars(8)
+                .typeString(" a UI/UX Designer.")
+                .pauseFor(1000)
+                .deleteChars(17)
+                .typeString(" a digital Designer.")
+                .pauseFor(1000)
+                .deleteChars(18)
+                .changeDeleteSpeed(50)
+                .start();
             }}
           />
         </h1>
@@ -106,25 +109,26 @@ const HomePage = ({
         <Skills data={mainContent[2]} />
       </div>
       <Education data={mainContent[3]} />
+      <References data={mainContent[4]} />
       <div
         id="about"
         className={styles.homeAboutSection}
         style={
           {
-            "--image-url-about": `url(${mainContent[4].image.filename})`,
+            "--image-url-about": `url(${mainContent[5].image.filename})`,
             backgroundColor: currentTheme.secondary,
           } as CustomCSSProperties
         }
       >
         <h1 className={styles.workheading} data-aos="fade-up">
-          {mainContent[4].headline}
+          {mainContent[5].headline}
         </h1>
         <p
           className={styles.aboutText}
           style={{ color: currentTheme.subtext }}
           data-aos="fade-up"
         >
-          {mainContent[4].text.content[0].content[0].text}
+          {mainContent[5].text.content[0].content[0].text}
         </p>
         <div
           data-aos="fade-up"
@@ -136,7 +140,7 @@ const HomePage = ({
             color: currentTheme.subtext,
           }}
         >
-          <Link href={mainContent[4].button[0].link.url} target="_blank">
+          <Link href={mainContent[5].button[0].link.url} target="_blank">
             <div
               className={styles.cta4}
               style={{
@@ -146,7 +150,7 @@ const HomePage = ({
                 alignItems: "center",
               }}
             >
-              {mainContent[4].button[0].label}&nbsp;&nbsp;&nbsp;&nbsp;
+              {mainContent[5].button[0].label}&nbsp;&nbsp;&nbsp;&nbsp;
               <FontAwesomeIcon
                 width="15px"
                 height="15px"

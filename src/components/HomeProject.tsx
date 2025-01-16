@@ -42,12 +42,12 @@ const HomeProject: React.FC<Project> = ({ card, id }) => {
           />
         </div>
         <h1 className={styles.projectTitle}>{card.label}</h1>
-        <h2
+        <div
           className={styles.projectSubTitle}
           style={{ color: currentTheme.subtext }}
         >
           {render(card.text)}
-        </h2>
+        </div>
         {/* <Link
           href={card.button[0].link.url}
           target="_blank"

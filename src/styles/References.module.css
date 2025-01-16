@@ -1,0 +1,73 @@
+.references {
+    padding: 0 10vw 72px 10vw;
+    text-align: center;
+  }
+  
+  .title {
+    font-family: Playfair Display, serif;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 30px;
+
+    padding-bottom: 60px;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .card {
+    padding: 20px;
+    text-align: center;
+    justify-items: center;
+    position: relative; 
+  }
+  
+  .card:not(:last-child) {
+    border-right: 2px solid var(--your-line-color, gray);
+  }
+  
+  .image {
+    width: 89px;
+    height: 89px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 2px solid white;
+  }
+  
+  .name {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: Playfair Display, serif;
+  }
+  
+  .description {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Playfair Display, serif;
+  }
+  
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .card:not(:last-child) {
+      border-right: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: 1fr; 
+    }
+  
+    .card:not(:last-child) {
+      border-right: none; 
+    }
+  }
+  

@@ -5,13 +5,14 @@ import { Home2Section } from "@/types/home-2";
 import { Home3Section } from "@/types/home-3";
 import { Home4Section } from "@/types/home-4";
 import { Home5Section } from "@/types/home-5";
+import { Home6Section } from "@/types/home-6";
 import { getStoryblokApi} from "@storyblok/react/rsc";
 
 export default async function Home() {
   const { data } = await fetchData();
   console.log("qqqq", data);
 
-  const mainContent:[Home1Section, Home2Section, Home3Section, Home4Section, Home5Section] =  data.story.content.body
+  const mainContent:[Home1Section, Home2Section, Home3Section, Home4Section, Home5Section, Home6Section] =  data.story.content.body
 
   return (
     <div>
