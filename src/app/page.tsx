@@ -10,7 +10,6 @@ import { getStoryblokApi} from "@storyblok/react/rsc";
 
 export default async function Home() {
   const { data } = await fetchData();
-  console.log("qqqq", data);
 
   const mainContent:[Home1Section, Home2Section, Home3Section, Home4Section, Home5Section, Home6Section] =  data.story.content.body
 

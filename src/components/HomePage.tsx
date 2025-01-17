@@ -35,7 +35,6 @@ const HomePage = ({
 }) => {
   const currentTheme = useTheme();
 
-  console.log("mainContent[1].cards", mainContent[1].cards);
   return (
     <div>
       <div

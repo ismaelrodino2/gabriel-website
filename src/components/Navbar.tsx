@@ -16,8 +16,6 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ toggleTheme, navData }) => {
   const currentTheme = useTheme();
 
-  console.log("navData", navData);
-
   const drawerVisible = useMediaQuery({ maxWidth: 950 });
 
   const [sticky, setSticky] = useState(false);

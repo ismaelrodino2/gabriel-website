@@ -4,7 +4,6 @@ import Head from 'next/head'
 import { userinfo } from '../Constants/userinfo'
 
 const HeadTag = ({page}: {page:unknown}) => {
-    console.log("aaa", page)
     return (
         <Head>
             <title>{`${userinfo.logoText} | ${page}`}</title>

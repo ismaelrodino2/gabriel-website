@@ -20,7 +20,12 @@ const Layout: React.FC<LayoutProps> = ({
 }) => {
   
   return (
-    <div>
+    <div style={{
+      minHeight: '100vh',
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+    }}>
       <Navbar toggleTheme={toggleTheme}  navData={navFooterData[0]} />
       {children}
       <Footer footerData={navFooterData[1]} />

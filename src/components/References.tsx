@@ -10,7 +10,6 @@ type ReferencesProps = {
 };
 
 const References: React.FC<ReferencesProps> = ({ data }) => {
-  console.log("Home5Section", data);
   const currentTheme = useTheme();
 
   return (

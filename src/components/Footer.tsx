@@ -12,7 +12,6 @@ interface FooterProps {
 const Footer: React.FC<FooterProps> = ({footerData}) => {
     const currentTheme = useTheme();
     const footerColor = currentTheme?.footerColor || '#F0F0F0';
-    console.log("footerData", footerData)
 
     return (
         <div className={styles.footermain} style={{ backgroundColor: footerColor, color: currentTheme.subtext }}>

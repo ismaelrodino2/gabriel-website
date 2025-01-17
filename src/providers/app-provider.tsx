@@ -19,7 +19,6 @@ type AppProviderProps = {
 };
 
 const AppProvider = ({ children, navFooterData }: AppProviderProps) => {
-  console.log("tetee", navFooterData)
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -42,8 +41,6 @@ const AppProvider = ({ children, navFooterData }: AppProviderProps) => {
   };
 
   const currentTheme = theme === "light" ? lightTheme : darkTheme;
-
-  console.log("navFooterData:", navFooterData);
 
   return (
     <ChakraProvider value={defaultSystem}>

@@ -17,8 +17,6 @@ const HomeProject: React.FC<Project> = ({ card, id }) => {
 
   const isMobile = useMediaQuery({ maxWidth: 950 });
 
-  console.log("cardcard",card)
-
   return (
     <div
       className={styles.projectmain}

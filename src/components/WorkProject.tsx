@@ -16,8 +16,6 @@ interface WorkProjectProps {
 const WorkProject: React.FC<WorkProjectProps> = ({ project, id }) => {
   const currentTheme = useTheme();
 
-  console.log("project", project.button[0].link);
-
   return (
     <div
       className={styles.parentofparentcard}

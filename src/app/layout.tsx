@@ -39,7 +39,6 @@ export default async function RootLayout({
 }>) {
     const { data } = await fetchData();
 
-    console.log("ttt", data.story.content.body)
   
   return (
     <html lang="en">
