@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AppProvider from "@/providers/app-provider";
 import { storyblokInit, apiPlugin, getStoryblokApi } from "@storyblok/react/rsc";
-import StoryblokProvider from "@/providers/StoryblokProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,7 +45,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AppProvider navFooterData={data.story.content.body}>
-          <StoryblokProvider>{children}</StoryblokProvider>
+         {children}
         </AppProvider>
       </body>
     </html>
