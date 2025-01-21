@@ -8,6 +8,7 @@ import { WorkTypes } from "@/types/work";
 export const WorkPage = ({ data }: { data: WorkTypes[] }) => {
   const currentTheme = useTheme();
 
+
   return (
     <div>
       <div className={styles.workHeading}>{headings.workMainPage}</div>

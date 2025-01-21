@@ -21,7 +21,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-responsive": "^10.0.0",
-    "react-swipeable": "^7.0.2",
+    "react-responsive-carousel": "^3.2.23",
     "storyblok-rich-text-react-renderer": "^2.9.2",
     "styled-components": "^6.1.14",
     "typewriter-effect": "^2.21.0"

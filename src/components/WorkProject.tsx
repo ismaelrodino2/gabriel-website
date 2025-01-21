@@ -1,12 +1,12 @@
-"use client";
-import styles from "../styles/Work.module.css";
-
-import Image from "next/image";
 import { useTheme } from "styled-components";
 import { HStack, TagLabel } from "@chakra-ui/react";
 import { Tag } from "./ui/tag";
 import { LinkIcon } from "@/Constants/icons";
 import { Card } from "@/types/work";
+import styles from "../styles/Work.module.css";
+import { useMemo } from 'react';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
 interface WorkProjectProps {
   project: Card;
@@ -16,6 +16,12 @@ interface WorkProjectProps {
 const WorkProject: React.FC<WorkProjectProps> = ({ project, id }) => {
   const currentTheme = useTheme();
 
+  // Filtra as imagens do conteúdo do projeto
+  const images = useMemo(() => {
+    return project.text.content[0].content.filter(item => item.type === 'image') as ImageContent[];
+  }, [project]); // Apenas recalcula quando o 'project' muda
+
+  console.log("images",images)
   return (
     <div
       className={styles.parentofparentcard}
@@ -44,15 +50,11 @@ const WorkProject: React.FC<WorkProjectProps> = ({ project, id }) => {
             className={styles.card}
             style={{
               borderColor: currentTheme.footerColor,
-              position: "relative",
             }}
           >
-            <Image
-              src={project.text.content[0].content[0].attrs.src}
-              alt="thumbnail image"
-              layout="fill"
-              objectFit="cover"
-            />
+           {images.length > 0 && <ImageCarousel images={images} />} 
+               
+
           </div>
           <div>
             <div
@@ -62,9 +64,7 @@ const WorkProject: React.FC<WorkProjectProps> = ({ project, id }) => {
                 borderColor: currentTheme.subtext,
               }}
             >
-              {/* <Link href={project.button[0]?.link?.url} > */}
               <LinkIcon />
-              {/* </Link> */}
             </div>
           </div>
         </div>
@@ -79,3 +79,48 @@ const WorkProject: React.FC<WorkProjectProps> = ({ project, id }) => {
 };
 
 export default WorkProject;
+
+// Tipos de imagem para o TypeScript
+interface ImageAttrs {
+  id: number;
+  alt: string;
+  src: string;
+  title: string;
+  source: string;
+  copyright: string;
+  meta_data: object;
+}
+
+interface ImageContent {
+  type: 'image';
+  attrs: ImageAttrs;
+}
+
+interface ImageCarouselProps {
+  images: ImageContent[];
+}
+
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
+  return (
+    <div className={styles.carouselContainer}>
+      <Carousel
+        infiniteLoop
+        autoPlay
+        interval={3000}
+        showThumbs={false} 
+        showStatus={false} 
+        dynamicHeight={false}
+      >
+        {images.map((image, index) => (
+          <div key={index} style={{height: "100%"}}>
+            <img
+              src={image.attrs.src}
+              alt={image.attrs.alt || 'Image'}
+              style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+            />
+          </div>
+        ))}
+      </Carousel>
+    </div>
+  );
+};

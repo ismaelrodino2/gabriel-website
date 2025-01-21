@@ -10,6 +10,11 @@
   }
 }
 
+.carouselContainer, .carousel-root, .carousel-root > div {
+  height: 100% !important;
+  }
+
+
 body {
   color: var(--foreground);
   background: var(--background);

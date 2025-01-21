@@ -21,6 +21,11 @@
   display: flex;
 }
 
+.carouselContainer {
+  height: 100% !important;
+  }
+
+
 .parentcard{
     padding: 1rem;
     width:fit-content;
