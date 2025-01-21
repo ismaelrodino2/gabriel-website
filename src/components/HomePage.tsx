@@ -77,7 +77,18 @@ const HomePage = ({
         >
           {mainContent[0].text?.content[0].content[0].text}
         </h2>
-        <Link href="#work"></Link>
+        <Link  href={mainContent[0].button[0].link.url} style={{marginTop: 100}}>
+          <div
+            className={styles.cta3}
+            style={{
+              background: currentTheme.secondary,
+              border: `2px solid ${currentTheme.accent}`,
+              color: currentTheme.buttonColor,
+            }}
+          >
+           {mainContent[0].button[0].label}
+          </div>
+          </Link>
       </div>
       <div className={styles.homeWorkSection} id="work">
         <h1 className={styles.workheading} data-aos="fade-up">

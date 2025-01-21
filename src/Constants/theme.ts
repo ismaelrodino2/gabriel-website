@@ -3,6 +3,7 @@ interface Theme {
     body: string;
     text: string;
     subtext: string;
+    buttonColor: string;
     secondary: string;
     tertiary: string;
     accent: string;
@@ -16,6 +17,7 @@ export const lightTheme: Theme = {
     body: '#fefefe',
     text: '#363537',
     subtext: '#000000',
+    buttonColor: '#000000',
     secondary: '#d7f7f5',
     tertiary: '#75cac3',
     accent: '#263859',
@@ -29,6 +31,7 @@ export const darkTheme: Theme = {
     body: '#17223b',
     text: '#FAFAFA',
     subtext: '#D0D0D0',
+    buttonColor: '#FFFFFF',
     secondary: '#263859',
     tertiary: '#A2AAB9',
     accent: '#d7f7f5',
